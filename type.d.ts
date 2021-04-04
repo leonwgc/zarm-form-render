@@ -11,7 +11,7 @@ export interface Item {
   cellProps?: object; // cell props配置
 }
 export interface Props {
-  layoutData: Array<Item>; // 表单布局配置，二维数组，一个子数组代码一个group块
+  layoutData: Array<Item>; // 表单布局配置
   data: object; // 数据存储,name作为key,内容为value
   setData: () => void; // 数据更新
 }
