@@ -71,15 +71,10 @@ export default function App() {
     },
     {
       render() {
-        return <div style={{ margin: '30px 6px' }}></div>;
-      },
-    },
-    {
-      render() {
         return (
-          <Panel title="你录入的内容">
-            <div style={{ margin: '10px 6px' }}>{JSON.stringify(data)}</div>
-          </Panel>
+          <Button block theme="primary" onClick={() => Toast.show(JSON.stringify(data))}>
+            确定
+          </Button>
         );
       },
     },
@@ -88,9 +83,6 @@ export default function App() {
   return (
     <div>
       <FormRenderer layoutData={layoutData} data={data} setData={setData} />
-      <Button block theme="primary" onClick={() => Toast.show(JSON.stringify(data))}>
-        确定
-      </Button>
     </div>
   );
 }
