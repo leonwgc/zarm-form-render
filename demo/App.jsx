@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FormRenderer from '../src';
+import FormRenderer from '../lib';
 import { Input, Cell, Radio, Select, DateSelect, Button, Toast, Panel } from 'zarm';
 import './App.less';
 
@@ -36,6 +36,14 @@ export default function App() {
         { label: '男', value: 'male' },
         { label: '女', value: 'female' },
       ],
+    },
+    {
+      render() {
+        if (!data.gender) {
+          return null;
+        }
+        return <div className={`${data.gender}`} />;
+      },
     },
     {
       render() {
@@ -86,7 +94,7 @@ export default function App() {
   ];
 
   return (
-    <div>
+    <div className="app">
       <FormRenderer layoutData={layoutData} data={data} setData={setData} />
       <Button block theme="primary" onClick={() => Toast.show(JSON.stringify(data))}>
         确定
