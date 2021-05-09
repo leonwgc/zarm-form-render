@@ -62,7 +62,7 @@ export default function FormRenderer({
         } = item;
 
         if (typeof render === 'function') {
-          return render();
+          return <React.Fragment key={idx}> {render()}</React.Fragment>;
         }
 
         let children: React.ReactNode[] = [];
