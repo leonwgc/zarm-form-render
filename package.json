@@ -18,7 +18,7 @@
   "scripts": {
     "clear": "rm -rf ./lib && clear",
     "start": "webpack-dev-server --dev",
-    "build:lib": "yarn clear && babel  src --out-dir lib"
+    "build:lib": "yarn clear && tsc &&  babel  src --out-dir lib"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -38,8 +38,11 @@
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-stage-0": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
     "@types/react": "^16.8.2",
     "@types/react-dom": "^16.8.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.1",
+    "@typescript-eslint/parser": "^4.22.1",
     "autoprefixer": "^9.7.6",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.0.6",
@@ -68,7 +71,8 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.2",
     "webpackbar": "^4.0.0",
-    "yargs": "^15.3.1"
+    "yargs": "^15.3.1",
+    "typescript": "^4.2.4"
   },
   "files": [
     "dist",
