@@ -145,6 +145,16 @@ export type Item = {
 
 ```
 
+下列三个组件, 请使用string格式的type , 或者直接复制src/index.tsx源码到工程避免这个问题
+```javascript
+const typeMapping = {
+  'Radio.Group': Radio.Group,
+  'Select': Select,
+  'DateSelect': DateSelect,
+};
+
+```
+
  可以自己运行示例， yarn start / npm start 查看demo 
 
  ![demo1.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9426fb899bcc476bb8c7dc6b00c57cc7~tplv-k3u1fbpfcp-watermark.image)

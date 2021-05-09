@@ -25,7 +25,7 @@ export default function App() {
       },
     },
     {
-      type: Radio.Group,
+      type: 'Radio.Group',
       label: '性别',
       name: 'gender',
       elProps: {
@@ -52,7 +52,7 @@ export default function App() {
       },
     },
     {
-      type: Select,
+      type: 'Select',
       label: '爱吃的水果',
       name: 'favfood',
       elProps: {
@@ -64,7 +64,7 @@ export default function App() {
     },
 
     {
-      type: DateSelect,
+      type: 'DateSelect',
       label: '出生日期',
       title: '被保人出生日期',
       placeholder: '请选择',
