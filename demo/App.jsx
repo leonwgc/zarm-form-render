@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FormRenderer from '../src';
+import FormRenderer from '../lib';
 import { Input, Cell, Radio, Select, DateSelect, Button, Toast, Panel } from 'zarm';
 import './App.less';
 
@@ -25,7 +25,7 @@ export default function App() {
       },
     },
     {
-      type: Radio.Group,
+      type: 'Radio.Group',
       label: '性别',
       name: 'gender',
       elProps: {
@@ -39,12 +39,20 @@ export default function App() {
     },
     {
       render() {
+        if (!data.gender) {
+          return null;
+        }
+        return <div className={`${data.gender}`} />;
+      },
+    },
+    {
+      render() {
         if (!data.gender) return null;
         return <Cell title="你是" description={data.gender === 'male' ? '男生' : '女生'}></Cell>;
       },
     },
     {
-      type: Select,
+      type: 'Select',
       label: '爱吃的水果',
       name: 'favfood',
       elProps: {
@@ -56,7 +64,7 @@ export default function App() {
     },
 
     {
-      type: DateSelect,
+      type: 'DateSelect',
       label: '出生日期',
       title: '被保人出生日期',
       placeholder: '请选择',
@@ -81,7 +89,7 @@ export default function App() {
   ];
 
   return (
-    <div>
+    <div className="app">
       <FormRenderer layoutData={layoutData} data={data} setData={setData} />
     </div>
   );
