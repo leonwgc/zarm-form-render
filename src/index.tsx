@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cell, Radio, DateSelect, Select } from 'zarm';
+import { Cell } from 'zarm';
 
 export type FormRenderProps = {
   layoutData: Item[]; // 表单布局配置
@@ -10,7 +10,6 @@ export type FormRenderProps = {
 export type Item = {
   type?: React.ComponentType | string; // 组件类型， 比如Input 等
   name: string; // Cell name
-  items?: Array<unknown>; // zarm dataSource
   description?: string; // Cell description
   label?: string; // Cell title
   render?: () => React.ReactNode;
@@ -24,12 +23,6 @@ export type Item = {
 
 // getJSON() 动态返回js配置
 // render()  自定义render任何react node
-
-const typeMapping = {
-  'Radio.Group': Radio.Group,
-  'Select': Select,
-  'DateSelect': DateSelect,
-};
 
 export default function FormRenderer({
   layoutData,
@@ -71,36 +64,15 @@ export default function FormRenderer({
           return <React.Fragment key={idx}> {render()}</React.Fragment>;
         }
 
-        let children: React.ReactNode[] = [];
-        if (type === Radio.Group || type === 'Radio.Group') {
-          children = items.map(
-            (it: { value: string | number | undefined; label: string }, idx1) => (
-              <Radio value={it.value} key={idx1}>
-                {it.label}
-              </Radio>
-            )
-          );
-        }
-
         props.value = data[name];
         props.onChange = onChangeFactory(name);
 
-        if (type === Select || type === 'Select') {
-          props.dataSource = items;
-        }
-        if (type === DateSelect || type === Select || type === 'Select' || type === 'DateSelect') {
-          props.onOk = props.onChange;
-          delete props.onChange;
-          props.onChange = elProps.onChange;
-        }
-
         return (
           <Cell key={idx} title={label} description={description} {...cellProps}>
-            {React.createElement(
-              typeof type === 'string' ? typeMapping[type] || 'span' : type,
-              { ...props, ...elProps } as React.Attributes,
-              ...children
-            )}
+            {React.createElement(type, {
+              ...props,
+              ...elProps,
+            } as React.Attributes)}
           </Cell>
         );
       })}

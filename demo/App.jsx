@@ -14,28 +14,27 @@ export default function App() {
       name: 'name',
     },
     {
-      getJSON() {
-        return data.name
-          ? {
-              type: Input,
-              label: '你填了',
-              description: data.name,
-            }
-          : null;
+      render() {
+        return data.name ? <Cell title="你填了">{data.name}</Cell> : null;
       },
     },
     {
-      type: 'Radio.Group',
-      label: '性别',
-      name: 'gender',
-      elProps: {
-        type: 'button',
-        ghost: true,
+      render() {
+        return (
+          <Cell title="性别">
+            <Radio.Group
+              type="button"
+              value={data.gender}
+              onChange={(value) => {
+                setData((d) => ({ ...d, gender: value }));
+              }}
+            >
+              <Radio value="male">男</Radio>
+              <Radio value="female">女</Radio>
+            </Radio.Group>
+          </Cell>
+        );
       },
-      items: [
-        { label: '男', value: 'male' },
-        { label: '女', value: 'female' },
-      ],
     },
     {
       render() {
@@ -52,7 +51,7 @@ export default function App() {
       },
     },
     {
-      type: 'Select',
+      type: Select,
       label: '爱吃的水果',
       name: 'favfood',
       elProps: {
@@ -64,12 +63,17 @@ export default function App() {
     },
 
     {
-      type: 'DateSelect',
+      type: DateSelect,
       label: '出生日期',
       title: '被保人出生日期',
       placeholder: '请选择',
       name: 'birthday',
       min: '1900-01-01',
+      elProps: {
+        onOk(value) {
+          setData((d) => ({ ...d, birthday: value }));
+        },
+      },
     },
     {
       type: Input,
@@ -80,7 +84,7 @@ export default function App() {
     {
       render() {
         return (
-          <Button block theme="primary" onClick={() => Toast.show(JSON.stringify(data))}>
+          <Button block theme="primary" onClick={() => alert(JSON.stringify(data))}>
             确定
           </Button>
         );

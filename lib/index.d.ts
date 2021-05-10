@@ -7,7 +7,6 @@ export declare type FormRenderProps = {
 export declare type Item = {
     type?: React.ComponentType | string;
     name: string;
-    items?: Array<unknown>;
     description?: string;
     label?: string;
     render?: () => React.ReactNode;
