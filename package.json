@@ -1,7 +1,7 @@
 {
   "name": "zarm-form-render",
-  "version": "1.0.3",
-  "description": "基于React Hooks + 众安保险Zarm组件库，简单使用 javascript 对象配置，实现移动端表单开发",
+  "version": "1.1.0",
+  "description": "基于React Hooks + 众安保险zarm组件库，简单使用 javascript 对象配置，实现移动端表单开发",
   "keywords": [
     "react",
     "zarm",
