@@ -1,4 +1,4 @@
-module.exports = (api) => {
+module.exports = api => {
   api.cache.using(() => process.env.NODE_ENV);
 
   const rt = {
@@ -6,19 +6,16 @@ module.exports = (api) => {
       [
         '@babel/preset-env',
         {
-          targets: {
-            browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 9'],
-          },
-        },
+          modules: false
+        }
       ],
       ['@babel/preset-react'],
-      ['@babel/preset-typescript'],
+      ['@babel/preset-typescript']
     ],
     plugins: [
       ['@babel/plugin-proposal-decorators', { legacy: true }],
-      ['@babel/plugin-proposal-class-properties', { loose: false }],
-      ['@babel/plugin-transform-runtime'],
-    ].filter(Boolean),
+      ['@babel/plugin-proposal-class-properties', { loose: false }]
+    ].filter(Boolean)
   };
 
   return rt;

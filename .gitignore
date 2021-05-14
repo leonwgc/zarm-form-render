@@ -10,7 +10,6 @@
 /build
 /t-dist
 /u-dist
-/dist
 /dist-server
 node_prerender
 /*.html

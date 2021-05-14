@@ -53,7 +53,6 @@ export default function FormRenderer({
           name,
           type,
           description,
-          items,
           elProps = {},
           cellProps = {},
           render,

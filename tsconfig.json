@@ -28,7 +28,7 @@
     "emitDecoratorMetadata": true,
     "allowJs": true,
     "strictNullChecks": false,
-    "outDir": "lib",
+    "outDir": "types",
     "lib": ["esnext", "dom", "es7"]
   },
   "include": ["src/**/*"],
