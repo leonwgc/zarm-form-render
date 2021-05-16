@@ -18,7 +18,7 @@
   "typings": "types/index.d.ts",
   "scripts": {
     "clear": "rm -rf ./dist && clear",
-    "start": "webpack-dev-server --dev",
+    "start": "vited -e demo",
     "build:lib": "yarn clear && tsc && babel ./src  -x '.tsx','.jsx' -d ./lib",
     "build": "yarn clear && father-build --cjs --esm && tsc"
   },
@@ -71,6 +71,7 @@
     "style-loader": "^0.20.3",
     "typescript": "^4.2.4",
     "url-loader": "^1.0.1",
+    "vited": "^1.2.2",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.2",
@@ -82,5 +83,6 @@
     "lib",
     "types",
     "es"
-  ]
+  ],
+  "port": 3000
 }
