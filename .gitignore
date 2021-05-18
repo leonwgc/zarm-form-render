@@ -35,3 +35,4 @@ report.html
 *.bk.*
 
 proxy.config.local.js
+vite.config.js
