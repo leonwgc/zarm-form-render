@@ -1,3 +1,3 @@
 export default {
-  entry: 'src/index'
+  entry: 'libsrc/index'
 };

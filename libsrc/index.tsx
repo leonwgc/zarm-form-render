@@ -12,7 +12,7 @@ export type Item = {
   name: string; // Cell name
   description?: string; // Cell description
   label?: string; // Cell title
-  render?: () => React.ReactNode;
+  render?: () => React.ReactElement;
   getJSON?: () => Item | null; // 动态返回Item配置
   elProps?: Record<string, unknown>; // 组件的props配置 , 比如type为Input, elProps则会配置到Input
   cellProps?: Record<string, unknown>; // cell props配置
@@ -28,7 +28,7 @@ export default function FormRenderer({
   layoutData,
   data,
   setData,
-}: FormRenderProps): React.ReactNode {
+}: FormRenderProps): React.ReactElement {
   const onFiledChange = (name: string, value: unknown) => {
     let v = value;
 

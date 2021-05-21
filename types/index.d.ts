@@ -9,10 +9,10 @@ export declare type Item = {
     name: string;
     description?: string;
     label?: string;
-    render?: () => React.ReactNode;
+    render?: () => React.ReactElement;
     getJSON?: () => Item | null;
     elProps?: Record<string, unknown>;
     cellProps?: Record<string, unknown>;
     [p: string]: unknown;
 };
-export default function FormRenderer({ layoutData, data, setData, }: FormRenderProps): React.ReactNode;
+export default function FormRenderer({ layoutData, data, setData, }: FormRenderProps): React.ReactElement;
