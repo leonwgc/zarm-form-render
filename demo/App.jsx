@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FormRenderer from '../../libsrc/index';
+import FormRenderer from '../dist/index.esm';
 import { Input, Cell, Radio, Select, DateSelect, Button, Toast, Panel } from 'zarm';
 import './App.less';
 
