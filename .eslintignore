@@ -1,11 +1,3 @@
-prerender.js 
-dist/*
-prerender/*
-dist-server/*
-node_modules/*
-webpack.config.js
-webpack.server.config.js
-deploy/*
-app.js
-lib
-demo
+
+dist
+node_modules

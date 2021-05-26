@@ -1,6 +1,2 @@
-dist/
-dist-server/
-node_modules/
-package-lock.json
-yarn.lock
-/**/*.ejs
+dist
+node_modules
