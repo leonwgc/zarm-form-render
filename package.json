@@ -1,12 +1,14 @@
 {
   "name": "zarm-form-render",
-  "version": "1.1.4",
-  "description": "基于React Hooks + 众安保险zarm组件库，简单使用 javascript 对象配置，实现移动端表单开发",
+  "version": "1.2.0",
+  "description": "使用js配置，开发zarm表单",
   "keywords": [
     "react",
+    "hooks",
     "zarm",
     "form",
-    "formrender"
+    "form-render",
+    "h5 form-render"
   ],
   "license": "MIT",
   "repository": "https://github.com/leonwgc/zarm-form-render",
