@@ -19,7 +19,8 @@
   "scripts": {
     "clear": "rimraf ./dist && clear",
     "build": "yarn clear && father-build && tsc",
-    "pub": "bash pub.sh"
+    "pub": "bash pub.sh",
+    "start": "node pack"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -51,7 +52,10 @@
     "father-build": "^1.19.5",
     "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
+    "packx": "^1.1.0",
     "prettier": "^2.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",
     "typescript": "^4.2.4",
     "yargs": "^15.3.1",

@@ -1,24 +1,24 @@
-# zarm-form-render
+import React, { useState } from 'react';
+import FormRenderer from '../src';
+import { Input, Cell, Radio, Select, DateSelect, Button } from 'zarm';
+import 'zarm/dist/zarm.css';
 
-简单使用 javascript 对象配置，实现 zarm 表单开发. 已服务于多个生产项目。
+type FormProps = {
+  name?: string;
+  gender?: string;
+  food?: string;
+  birthday?: string;
+  mobile?: string;
+};
 
-## 安装
-
-用 npm [npm](https://npmjs.org/) / [yarn](https://yarnpkg.com) 安装:
-
-    $ npm install --save zarm-form-render
-    $ yarn add zarm-form-render
-
-## 代码示例
-
-```jsx
-import React, { useState, useEffect } from 'react';
-import FormRenderer from 'zarm-form-render';
-import { Input, Cell, Radio, Select, DateSelect, Button, Toast, Panel } from 'zarm';
-import './App.less';
-
-export default function App() {
-  const [data, setData] = useState({});
+export default function App(): React.ReactElement {
+  const [data, setData] = useState<FormProps>({
+    name: '',
+    gender: '',
+    food: 'banana',
+    birthday: '',
+    mobile: '',
+  });
 
   const layoutData = [
     {
@@ -40,7 +40,7 @@ export default function App() {
               type="button"
               value={data.gender}
               onChange={(value) => {
-                setData((d) => ({ ...d, gender: value }));
+                setData((d) => ({ ...d, gender: value as string }));
               }}
             >
               <Radio value="male">男</Radio>
@@ -67,7 +67,7 @@ export default function App() {
     {
       type: Select,
       label: '爱吃的水果',
-      name: 'favfood',
+      name: 'food',
       elProps: {
         dataSource: [
           { label: 'apple', value: 'apple' },
@@ -112,31 +112,3 @@ export default function App() {
     </div>
   );
 }
-```
-
-配置项目说明
-
-```javascript
-export type FormRenderProps = {
-  layoutData: Item[], // 表单布局配置
-  data: Record<string, unknown>, // 数据存储,Item name作为key,组件值为value
-  setData: (p: unknown) => void, // 数据更新, 通常来自 react hooks, [data,setData]=useState({})
-};
-
-export type Item = {
-  type?: React.ComponentType | string, // 组件类型， 比如Input 等
-  name: string, // Cell name
-  description?: string, // Cell description
-  label?: string, // Cell title
-  render?: () => React.ReactNode,
-  getJSON?: () => Item | null, // 动态返回Item配置
-  elProps?: Record<string, unknown>, // 组件的props配置 , 比如type为Input, elProps则会配置到Input
-  cellProps?: Record<string, unknown>, // cell props配置
-};
-```
-
-```
-
-yarn start / npm start 查看demo
-
-```

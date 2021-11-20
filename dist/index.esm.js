@@ -131,7 +131,7 @@ var _excluded = ["label", "name", "type", "description", "elProps", "cellProps",
  *
  * @export
  * @param {FormRenderProps} props
- * @return {*}  {React.ReactNode}
+ * @return {*}  {React.ReactElement}
  */
 function FormRenderer(props) {
   var layoutData = props.layoutData,

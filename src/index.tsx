@@ -11,10 +11,14 @@ export type FormRenderProps = {
 };
 
 export type Item = {
-  /** 组件类型，比如Input,Button,"input"  */
+  /**
+   * 组件类型，比如Input,Button,"input",
+   * 组件默认都会添加value和onChange属性用于接受/更新数据，
+   * 如果默认的不符需求，请在elProps自行定义
+   */
   type?: React.ComponentType | string;
   /** 组件值保存在data的键名,  */
-  name: string;
+  name?: string;
   /** 设置标题区域内容 */
   label?: ReactNode;
   /**  设置描述区域内容  */
@@ -35,9 +39,9 @@ export type Item = {
  *
  * @export
  * @param {FormRenderProps} props
- * @return {*}  {React.ReactNode}
+ * @return {*}  {React.ReactElement}
  */
-export default function FormRenderer(props: FormRenderProps): React.ReactNode {
+export default function FormRenderer(props: FormRenderProps): React.ReactElement {
   const { layoutData, data, setData } = props;
 
   const onFiledChange = (name: string, value: unknown) => {
