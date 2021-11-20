@@ -124,6 +124,15 @@ function _objectWithoutProperties(source, excluded) {
   return target;
 }
 
+var _excluded = ["label", "name", "type", "description", "elProps", "cellProps", "render"];
+
+/**
+ * zarm表单渲染组件
+ *
+ * @export
+ * @param {FormRenderProps} props
+ * @return {*}  {React.ReactNode}
+ */
 function FormRenderer(props) {
   var layoutData = props.layoutData,
       data = props.data,
@@ -166,7 +175,7 @@ function FormRenderer(props) {
         _item$cellProps = _item.cellProps,
         cellProps = _item$cellProps === void 0 ? {} : _item$cellProps,
         render = _item.render,
-        props = _objectWithoutProperties(_item, ["label", "name", "type", "description", "elProps", "cellProps", "render"]);
+        props = _objectWithoutProperties(_item, _excluded);
 
     if (typeof render === 'function') {
       return /*#__PURE__*/React.createElement(React.Fragment, {

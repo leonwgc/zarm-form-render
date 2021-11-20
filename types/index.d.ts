@@ -27,4 +27,11 @@ export declare type Item = {
     /** 其他属性，透传到组件 */
     [otherProps: string]: unknown;
 };
+/**
+ * zarm表单渲染组件
+ *
+ * @export
+ * @param {FormRenderProps} props
+ * @return {*}  {React.ReactNode}
+ */
 export default function FormRenderer(props: FormRenderProps): React.ReactNode;
