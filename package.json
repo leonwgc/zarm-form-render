@@ -18,7 +18,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "clear": "rimraf ./dist && clear",
-    "build": "yarn clear && father-build --cjs --esm && tsc",
+    "build": "yarn clear && father-build && tsc",
     "pub": "bash pub.sh"
   },
   "peerDependencies": {
@@ -32,12 +32,12 @@
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.9.6",
-    "@babel/runtime": "^7.14.0",
-    "@babel/runtime-corejs3": "^7.14.0",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-stage-0": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
+    "@babel/runtime": "^7.14.0",
+    "@babel/runtime-corejs3": "^7.14.0",
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
     "@types/react": "^16.8.2",
@@ -54,7 +54,8 @@
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.2.4",
-    "yargs": "^15.3.1"
+    "yargs": "^15.3.1",
+    "zarm": "^2.9.9"
   },
   "files": [
     "dist"

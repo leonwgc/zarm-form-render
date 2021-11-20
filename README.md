@@ -1,6 +1,6 @@
 # zarm-form-render
 
-简单使用 javascript 对象配置，实现 Zarm 表单开发. 已服务于多个生产项目。
+简单使用 javascript 对象配置，实现 zarm 表单开发. 已服务于多个生产项目。
 
 ## 安装
 

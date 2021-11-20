@@ -124,13 +124,10 @@ function _objectWithoutProperties(source, excluded) {
   return target;
 }
 
-// 对于无法配置(比如自定义组件，需要根据条件显示的组件等)的情况， 请使用render方法，
-// getJSON() 动态返回js配置
-// render()  自定义render任何react node
-function FormRenderer(_ref) {
-  var layoutData = _ref.layoutData,
-      data = _ref.data,
-      setData = _ref.setData;
+function FormRenderer(props) {
+  var layoutData = props.layoutData,
+      data = props.data,
+      setData = props.setData;
 
   var onFiledChange = function onFiledChange(name, value) {
     var v = value; // for Select ctrl
@@ -151,7 +148,7 @@ function FormRenderer(_ref) {
   };
 
   return /*#__PURE__*/React.createElement("div", {
-    className: "renderer"
+    className: "zarm-form-renderer"
   }, layoutData.map(function (item, idx) {
     if (typeof item.getJSON === 'function') {
       item = item.getJSON();
