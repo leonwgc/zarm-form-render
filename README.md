@@ -1,10 +1,10 @@
 # zarm-form-render
 
-简单使用 javascript 对象配置，实现 zarm 表单开发. 已服务于多个生产项目。
+使用js对象配置，开发zarm表单.
 
 ## 安装
 
-用 npm [npm](https://npmjs.org/) / [yarn](https://yarnpkg.com) 安装:
+ [npm](https://npmjs.org/) / [yarn](https://yarnpkg.com) 安装:
 
     $ npm install --save zarm-form-render
     $ yarn add zarm-form-render
@@ -12,13 +12,27 @@
 ## 代码示例
 
 ```jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import FormRenderer from 'zarm-form-render';
-import { Input, Cell, Radio, Select, DateSelect, Button, Toast, Panel } from 'zarm';
-import './App.less';
+import { Input, Cell, Radio, Select, DateSelect, Button } from 'zarm';
+import 'zarm/dist/zarm.css';
 
-export default function App() {
-  const [data, setData] = useState({});
+type FormProps = {
+  name?: string;
+  gender?: string;
+  food?: string;
+  birthday?: string;
+  mobile?: string;
+};
+
+export default function App(): React.ReactElement {
+  const [data, setData] = useState<FormProps>({
+    name: '',
+    gender: '',
+    food: 'banana',
+    birthday: '',
+    mobile: '',
+  });
 
   const layoutData = [
     {
@@ -40,7 +54,7 @@ export default function App() {
               type="button"
               value={data.gender}
               onChange={(value) => {
-                setData((d) => ({ ...d, gender: value }));
+                setData((d) => ({ ...d, gender: value as string }));
               }}
             >
               <Radio value="male">男</Radio>
@@ -67,7 +81,7 @@ export default function App() {
     {
       type: Select,
       label: '爱吃的水果',
-      name: 'favfood',
+      name: 'food',
       elProps: {
         dataSource: [
           { label: 'apple', value: 'apple' },
@@ -112,31 +126,54 @@ export default function App() {
     </div>
   );
 }
+
 ```
 
 配置项目说明
 
-```javascript
-export type FormRenderProps = {
-  layoutData: Item[], // 表单布局配置
-  data: Record<string, unknown>, // 数据存储,Item name作为key,组件值为value
-  setData: (p: unknown) => void, // 数据更新, 通常来自 react hooks, [data,setData]=useState({})
+```jsx
+export declare type FormRenderProps = {
+    /** 表单布局配置 */
+    layoutData: Item[];
+    /** 数据存储,Item name作为key,组件值为value */
+    data: Record<string, unknown>;
+    /** 数据更新, 通常来自 react hooks, [data,setData]=useState({}) */
+    setData: (data: Record<string, unknown>) => void;
+};
+export declare type Item = {
+    /**
+     * 组件类型，比如Input,Button,"input",
+     * 组件默认都会添加value和onChange属性用于接受/更新数据，
+     * 如果默认的不符需求，请在elProps自行定义
+     */
+    type?: React.ComponentType | string;
+    /** 组件值保存在data的键名,  */
+    name?: string;
+    /** 设置标题区域内容 */
+    label?: ReactNode;
+    /**  设置描述区域内容  */
+    description?: ReactNode;
+    /** 自定义渲染 */
+    render?: () => ReactNode;
+    /** 动态返回Item，优先级高于render */
+    getJSON?: () => Item | null;
+    /** 组件props,会透传给type定义的组件 */
+    elProps?: Record<string, unknown>;
+    /** Cell其他属性,会透传给Cell */
+    cellProps?: Record<string, unknown>;
+    /** 其他属性，透传到组件 */
+    [otherProps: string]: unknown;
 };
 
-export type Item = {
-  type?: React.ComponentType | string, // 组件类型， 比如Input 等
-  name: string, // Cell name
-  description?: string, // Cell description
-  label?: string, // Cell title
-  render?: () => React.ReactNode,
-  getJSON?: () => Item | null, // 动态返回Item配置
-  elProps?: Record<string, unknown>, // 组件的props配置 , 比如type为Input, elProps则会配置到Input
-  cellProps?: Record<string, unknown>, // cell props配置
-};
+/**
+ * zarm表单渲染组件
+ *
+ * @export
+ * @param {FormRenderProps} props
+ * @return {*}  {React.ReactElement}
+ */
+export default function FormRenderer(props: FormRenderProps): React.ReactElement;
 ```
 
-```
 
 yarn start / npm start 查看demo
-
-```

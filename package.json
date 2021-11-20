@@ -1,6 +1,6 @@
 {
   "name": "zarm-form-render",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "使用js配置，开发zarm表单",
   "keywords": [
     "react",

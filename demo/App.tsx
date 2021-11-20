@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FormRenderer from '../src';
+import FormRenderer from 'zarm-form-render';
 import { Input, Cell, Radio, Select, DateSelect, Button } from 'zarm';
 import 'zarm/dist/zarm.css';
 
